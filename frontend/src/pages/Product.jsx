@@ -1,4 +1,4 @@
-import React, { useContext, useEffect, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import { useParams } from 'react-router-dom'
 import { ShopContext } from '../context/ShopContext';
 import { assets } from '../assets/assets';
@@ -85,9 +85,21 @@ const Product = () => {
           <p className='border px-5 py-3 text-sm'>Reviews (122)</p>
         </div>
         <div className='flex flex-col gap-4 border px-6 py-6 text-sm text-gray-500'>
-          <p>An e-commerce website is an online platform that facilitates the buying and selling of products or services over the internet. It serves as a virtual marketplace where businesses and individuals can showcase their products, interact with customers, and conduct transactions without the need for a physical presence. E-commerce websites have gained immense popularity due to their convenience, accessibility, and the global reach they offer.</p>
-          <p>E-commerce websites typically display products or services along with detailed descriptions, images, prices, and any available variations (e.g., sizes, colors). Each product usually has its own dedicated page with relevant information.</p>
-        </div>
+          <p>
+
+Elegant Pleats: Classic front pleats for a sophisticated look that flatters your silhouette.
+Comfortable Waistband: Adjustable waistband for a snug fit without compromising comfort.
+Versatile Design: Suitable for both formal occasions and casual outings; pairs well with shirts, blazers, and tees.
+Breathable Fabric: Lightweight and breathable material keeps you comfortable throughout the day.
+Easy Care: Machine washable for convenient maintenance.
+Care Instructions:
+
+Machine wash cold with like colors
+Tumble dry low or hang to dry
+Iron on low heat if necessary <br />
+<b>Why Choose Our Pleated Pants? </b>
+<br />With their refined style and exceptional comfort, our Classic Pleated Pants are an essential addition to any wardrobe. Experience the perfect blend of elegance and practicality.  </p>
+ </div>
       </div>
 
       {/* --------- display related products ---------- */}
