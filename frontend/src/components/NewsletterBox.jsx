@@ -1,23 +1,65 @@
-import React from 'react'
+import React from 'react';
+import Swal from 'sweetalert2';
 
 const NewsletterBox = () => {
+    // Function to show the success alert
+    const showSuccessAlert = () => {
+        Swal.fire({
+            title: "Thank you for subscribing!",
+            text: "You are subscribed to our newsletter. Use coupon code: PNP20 for a 20% discount!",
+            icon: "success",
+            confirmButtonText: "OK",
+            customClass: {
+                popup: 'bg-black text-white p-6  shadow-lg text-center',
+                confirmButton: 'bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition duration-200'
+            },
+            backdrop: 'rgba(0, 0, 0, 0.7)', // dark overlay
+            allowOutsideClick: false,
+            allowEscapeKey: false,
+        });
+    };
 
+    // Function to handle form submission
     const onSubmitHandler = (event) => {
         event.preventDefault();
-    }
+        showSuccessAlert();
+    };
 
-  return (
-    <div className=' text-center'>
-      <p className='text-2xl font-medium text-gray-800'>Subscribe now & get 20% off</p>
-      <p className='text-gray-400 mt-3'>
-      Be the first to access deals and new arrivals—join us today!
-      </p>
-      <form onSubmit={onSubmitHandler} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border pl-3'>
-        <input className='w-full sm:flex-1 outline-none' type="email" placeholder='Enter your email' required/>
-        <button type='submit' className='bg-black text-white text-xs px-10 py-4'>SUBSCRIBE</button>
-      </form>
-    </div>
-  )
-}
+    return (
+        <div className='text-center'>
+            <NewsletterHeader />
+            <NewsletterForm onSubmit={onSubmitHandler} />
+        </div>
+    );
+};
 
-export default NewsletterBox
+// Component for the header
+const NewsletterHeader = () => (
+    <>
+        <p className='text-2xl font-medium text-gray-800'>Subscribe now & get 20% off</p>
+        <p className='text-gray-400 mt-3'>
+            Be the first to access deals and new arrivals—join us today!
+        </p>
+    </>
+);
+
+// Component for the newsletter subscription form
+const NewsletterForm = ({ onSubmit }) => (
+    <form onSubmit={onSubmit} className='w-full sm:w-1/2 flex items-center gap-3 mx-auto my-6 border pl-3'>
+        <input
+            className='w-full sm:flex-1 outline-none'
+            type="email"
+            placeholder='Enter your email'
+            required
+            autoComplete="email" // Enables browser's email autofill
+        />
+        <button
+            type='submit'
+            className='bg-black text-white text-xs px-10 py-4'
+        >
+            SUBSCRIBE
+        </button>
+    </form>
+);
+
+export default NewsletterBox;

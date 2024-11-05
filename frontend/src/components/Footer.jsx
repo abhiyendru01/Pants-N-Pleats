@@ -25,7 +25,7 @@ const Footer = () => {
         <div>
           <p className='text-xl font-medium mb-5'>GET IN TOUCH</p>
           <ul className='flex flex-col gap-1 text-gray-600'>
-            <li>91 621 555 0132</li>
+            <li>+91 6283813133</li>
             <li>support@pantsnpleats.com</li>
           </ul>
         </div>
