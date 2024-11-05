@@ -102,7 +102,7 @@ const Add = ({ token }) => {
                 </div>
                 <div>
                     <p className='mb-2'>Product Price</p>
-                    <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="number" placeholder='25' />
+                    <input onChange={(e) => setPrice(e.target.value)} value={price} className='w-full px-3 py-2 sm:w-[120px]' type="number" placeholder='900' />
                 </div>
             </div>
             <div>
@@ -110,7 +110,7 @@ const Add = ({ token }) => {
                 <div className='flex gap-3'>
                     {['S', 'M', 'L', 'XL', 'XXL'].map((size) => (
                         <div key={size} onClick={() => setSizes(prev => prev.includes(size) ? prev.filter(item => item !== size) : [...prev, size])}>
-                            <p className={`${sizes.includes(size) ? "bg-pink-100" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>{size}</p>
+                            <p className={`${sizes.includes(size) ? "bg-gray-800 text-gray-200" : "bg-slate-200"} px-3 py-1 cursor-pointer`}>{size}</p>
                         </div>
                     ))}
                 </div>
