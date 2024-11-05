@@ -12,12 +12,12 @@ const About = () => {
       </div>
 
       <div className='my-10 flex flex-col md:flex-row gap-16'>
-          <img className='w-full md:max-w-[450px]' src={assets.about_img} alt="" />
+          <img className='w-full md:max-w-[450px] shadow-lg grayscale' src={assets.about_img} alt="" />
           <div className='flex flex-col justify-center gap-6 md:w-2/4 text-gray-600'>
-              <p>Forever was born out of a passion for innovation and a desire to revolutionize the way people shop online. Our journey began with a simple idea: to provide a platform where customers can easily discover, explore, and purchase a wide range of products from the comfort of their homes.</p>
-              <p>Since our inception, we've worked tirelessly to curate a diverse selection of high-quality products that cater to every taste and preference. From fashion and beauty to electronics and home essentials, we offer an extensive collection sourced from trusted brands and suppliers.</p>
+              <p>Pants & Pleats was created with a passion for style and a commitment to elevate the shopping experience for fashion enthusiasts. Our journey began with a simple vision: to build a platform where customers can easily find and shop a curated selection of premium pants that blend comfort, quality, and timeless style.</p>
+              <p>From our inception, we have focused on sourcing a range of pants that cater to diverse tastes and occasions. Whether you’re seeking classic office wear, casual essentials, or trendy pieces, Pants & Pleats offers collections that reflect quality and sophistication, brought to you by trusted brands and suppliers.</p>
               <b className='text-gray-800'>Our Mission</b>
-              <p>Our mission at Forever is to empower customers with choice, convenience, and confidence. We're dedicated to providing a seamless shopping experience that exceeds expectations, from browsing and ordering to delivery and beyond.</p>
+              <p>At Pants & Pleats, our mission is to empower customers with style, convenience, and confidence. We’re committed to delivering an effortless shopping experience that exceeds expectations—from the moment you browse our collections to the delivery of your chosen styles.</p>
           </div>
       </div>
 
