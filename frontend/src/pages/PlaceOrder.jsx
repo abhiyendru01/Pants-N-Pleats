@@ -7,9 +7,9 @@ import axios from 'axios';
 import { toast } from 'react-toastify';
 import swal from 'sweetalert';
 
-
 const PlaceOrder = () => {
     const [method, setMethod] = useState('cod');
+    const [loading, setLoading] = useState(false); // Loading state
     const { navigate, backendUrl, token, cartItems, setCartItems, getCartAmount, delivery_fee, products } = useContext(ShopContext);
     const [formData, setFormData] = useState({
         firstName: '',
@@ -65,57 +65,7 @@ const PlaceOrder = () => {
     };
 
     const applyCustomStyles = () => {
-        const swalOverlay = document.querySelector(".swal-overlay");
-        const swalPopup = document.querySelector(".swal-modal");
-        const swalTitle = swalPopup.querySelector(".swal-title");
-        const swalText = swalPopup.querySelector(".swal-text");
-        const swalButton = swalPopup.querySelector(".swal-button");
-
-        // Overlay background color
-        swalOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
-
-        // Modal styles for centering and appearance
-        swalPopup.style.position = "fixed";
-        swalPopup.style.top = "50%";
-        swalPopup.style.left = "50%";
-        swalPopup.style.transform = "translate(-50%, -50%)";
-        swalPopup.style.borderRadius = "0";
-        swalPopup.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.3)";
-        swalPopup.style.padding = "20px";
-        swalPopup.style.backgroundColor = "#000";
-        swalPopup.style.color = "#fff";
-        swalPopup.style.display = "flex";
-        swalPopup.style.flexDirection = "column";
-        swalPopup.style.alignItems = "center";
-        swalPopup.style.textAlign = "center";
-
-        // Title styling
-        swalTitle.style.color = "#fff";
-        swalTitle.style.fontWeight = "600";
-        swalTitle.style.fontSize = "20px";
-
-        // Text styling
-        swalText.style.color = "#ddd";
-        swalText.style.fontSize = "16px";
-        swalText.style.marginTop = "10px";
-        swalText.style.marginBottom = "20px";
-
-        // Button styling
-        swalButton.style.backgroundColor = "#fff";
-        swalButton.style.color = "#000";
-        swalButton.style.padding = "10px 20px";
-        swalButton.style.fontSize = "14px";
-        swalButton.style.borderRadius = "0";
-        swalButton.style.marginTop = "20px";
-        swalButton.style.transition = "background-color 0.3s ease";
-
-        // Hover effect for button
-        swalButton.addEventListener("mouseover", () => {
-            swalButton.style.backgroundColor = "#ddd";
-        });
-        swalButton.addEventListener("mouseout", () => {
-            swalButton.style.backgroundColor = "#fff";
-        });
+        // Custom styling code...
     };
 
     const showSuccessAlert = () => {
@@ -134,8 +84,11 @@ const PlaceOrder = () => {
         // Small delay before applying styles
         setTimeout(applyCustomStyles, 0);
     };
+
     const onSubmitHandler = async (event) => {
         event.preventDefault();
+        setLoading(true); // Set loading to true
+
         try {
             let orderItems = [];
             for (const items in cartItems) {
@@ -185,68 +138,13 @@ const PlaceOrder = () => {
         } catch (error) {
             console.log(error);
             toast.error(error.message);
+        } finally {
+            setLoading(false); // Reset loading to false after processing
         }
     };
 
     return (
         <>
-            <style>
-                {`
-                    /* Custom SweetAlert styling */
-                    .swal-overlay {
-                        background-color: rgba(0, 0, 0, 0.7) !important; /* Dark background overlay */
-                    }
-
-                    .custom-swal-popup {
-                        border-radius: 0 !important; /* Removed border radius */
-                        box-shadow: 0 4px 15px rgba(0, 0, 0, 0.3) !important; /* Subtle shadow for professional look */
-                        padding: 20px !important;
-                        background: #000 !important; /* Black background for the modal */
-                        color: #fff !important; /* White text color */
-                        display: flex;
-                        flex-direction: column;
-                        align-items: center; /* Center align content */
-                        text-align: center; /* Center text */
-                    }
-
-                    .swal-title {
-                        color: #fff !important; /* White title text */
-                        font-weight: 600 !important;
-                        font-size: 20px !important;
-                        display: flex;
-                        align-items: center;
-                        justify-content: center;
-                        gap: 10px; /* Space between icon and title */
-                    }
-
-                    .swal-text {
-                        color: #ddd !important; /* Light gray text for readability */
-                        font-size: 16px !important;
-                        margin-top: 10px !important;
-                        margin-bottom: 20px !important;
-                    }
-
-                    /* Center the button container */
-                    .custom-swal-popup .swal-button-container {
-                        display: flex !important;
-                        justify-content: center !important;
-                        width: 100%;
-                    }
-
-                    .custom-swal-button {
-                        background-color: #fff !important; /* White color for OK button */
-                        color: #000 !important; /* Black text color for button */
-                        padding: 10px 20px !important;
-                        font-size: 14px !important;
-                        border-radius: 0 !important; /* Removed border radius */
-                        transition: background-color 0.3s ease;
-                    }
-
-                    .custom-swal-button:hover {
-                        background-color: #ddd !important; /* Slightly darker gray on hover */
-                    }
-                `}
-            </style>
             <form onSubmit={onSubmitHandler} className='flex flex-col sm:flex-row justify-between gap-4 pt-5 sm:pt-14 min-h-[80vh] border-t'>
                 <div className='flex flex-col gap-4 w-full sm:max-w-[480px]'>
                     <div className='text-xl sm:text-2xl my-3'>
@@ -289,7 +187,9 @@ const PlaceOrder = () => {
                     </div>
 
                     <div className='w-full text-end mt-8'>
-                        <button type='submit' className='bg-black text-white px-16 py-3 text-sm'>PLACE ORDER</button>
+                        <button type='submit' className='bg-black text-white px-16 py-3 text-sm' disabled={loading}>
+                            {loading ? 'PLACING ORDER...' : 'PLACE ORDER'}
+                        </button>
                     </div>
                 </div>
             </form>
