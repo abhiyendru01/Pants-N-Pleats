@@ -65,7 +65,57 @@ const PlaceOrder = () => {
     };
 
     const applyCustomStyles = () => {
-        // Custom styling code...
+        const swalOverlay = document.querySelector(".swal-overlay");
+        const swalPopup = document.querySelector(".swal-modal");
+        const swalTitle = swalPopup.querySelector(".swal-title");
+        const swalText = swalPopup.querySelector(".swal-text");
+        const swalButton = swalPopup.querySelector(".swal-button");
+
+        // Overlay background color
+        swalOverlay.style.backgroundColor = "rgba(0, 0, 0, 0.7)";
+
+        // Modal styles for centering and appearance
+        swalPopup.style.position = "fixed";
+        swalPopup.style.top = "50%";
+        swalPopup.style.left = "50%";
+        swalPopup.style.transform = "translate(-50%, -50%)";
+        swalPopup.style.borderRadius = "0";
+        swalPopup.style.boxShadow = "0 4px 15px rgba(0, 0, 0, 0.3)";
+        swalPopup.style.padding = "20px";
+        swalPopup.style.backgroundColor = "#000";
+        swalPopup.style.color = "#fff";
+        swalPopup.style.display = "flex";
+        swalPopup.style.flexDirection = "column";
+        swalPopup.style.alignItems = "center";
+        swalPopup.style.textAlign = "center";
+
+        // Title styling
+        swalTitle.style.color = "#fff";
+        swalTitle.style.fontWeight = "600";
+        swalTitle.style.fontSize = "20px";
+
+        // Text styling
+        swalText.style.color = "#ddd";
+        swalText.style.fontSize = "16px";
+        swalText.style.marginTop = "10px";
+        swalText.style.marginBottom = "20px";
+
+        // Button styling
+        swalButton.style.backgroundColor = "#fff";
+        swalButton.style.color = "#000";
+        swalButton.style.padding = "10px 20px";
+        swalButton.style.fontSize = "14px";
+        swalButton.style.borderRadius = "0";
+        swalButton.style.marginTop = "20px";
+        swalButton.style.transition = "background-color 0.3s ease";
+
+        // Hover effect for button
+        swalButton.addEventListener("mouseover", () => {
+            swalButton.style.backgroundColor = "#ddd";
+        });
+        swalButton.addEventListener("mouseout", () => {
+            swalButton.style.backgroundColor = "#fff";
+        });
     };
 
     const showSuccessAlert = () => {
