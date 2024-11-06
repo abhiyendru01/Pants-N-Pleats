@@ -10,10 +10,12 @@ const NewsletterBox = () => {
             icon: "success",
             confirmButtonText: "OK",
             customClass: {
-                popup: 'bg-black text-white p-6  shadow-lg text-center',
-                confirmButton: 'bg-white text-black px-4 py-2 rounded-md hover:bg-gray-200 transition duration-200'
+                popup: 'bg-black text-white p-6 shadow-lg text-center rounded-none', // Remove border radius
+                title: 'text-lg font-semibold', // Professional text style
+                htmlContainer: 'text-gray-300 text-sm', // More subtle, professional text color and size
+                confirmButton: 'bg-white text-black px-6 py-2 rounded-none hover:bg-gray-200 transition duration-200' // Button without border radius
             },
-            backdrop: 'rgba(0, 0, 0, 0.7)', // dark overlay
+            backdrop: 'rgba(0, 0, 0, 0.7)', // Dark overlay
             allowOutsideClick: false,
             allowEscapeKey: false,
         });
